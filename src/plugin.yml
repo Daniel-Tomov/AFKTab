@@ -1,0 +1,7 @@
+name: AFKTab
+version: 1.0
+main: me.cageydinosaur.afktab.Main
+api-version: 1.17
+commands:
+  afktab:
+    usage: /afktab

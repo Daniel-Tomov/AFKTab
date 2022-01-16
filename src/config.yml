@@ -1,0 +1,14 @@
+#Message sent only to AFK player
+privateAFKMessage: "&aYou are now AFK"
+privateNonAFKMessage: "&aYou are no longer AFK"
+
+#Message broadcasted to all players Use "{player}" for the player name
+globalAFKMessage: "&a{player} &ais now AFK"
+globalNonAFKMessage: "&a{player} &ais no longer AFK"
+
+#This text will be shown in the tab list and as a LuckPerms Prefix
+tabListText: "&7[AFK]"
+
+
+#This will be the priority level of the prefix
+priorityLevel: 10
