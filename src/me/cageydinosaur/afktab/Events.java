@@ -25,12 +25,12 @@ public class Events implements Listener {
 		Player p = Bukkit.getPlayer(i.getName());
 		if (i.isAfk()) {
 			if (p.hasPermission("afk.sendmessage.global")) {
-				Bukkit.broadcastMessage(
-						plugin.chat(plugin.globalNonAFKMessage().replace("{player}", p.getName())));
+				Bukkit.broadcastMessage(plugin.chat(plugin.globalNonAFKMessage().replace("{player}", p.getName())));
 			} else if (p.hasPermission("afk.sendmessage.private")) {
 				i.setAfkMessage(plugin.chat(plugin.privateNonAFKMessage()));
 			}
-			p.setPlayerListName(ChatColor.WHITE + p.getName());
+			if (p.hasPermission("afk.tab"))
+				p.setPlayerListName(ChatColor.WHITE + p.getName());
 			PrefixNode node = PrefixNode.builder(plugin.chat(plugin.tabListText()), plugin.priorityLevel()).build();
 
 			plugin.api.getUserManager().modifyUser(p.getUniqueId(), user -> {
@@ -38,12 +38,12 @@ public class Events implements Listener {
 			});
 		} else {
 			if (p.hasPermission("afk.sendmessage.global")) {
-				Bukkit.broadcastMessage(
-						plugin.chat(plugin.globalAFKMessage().replace("{player}", p.getDisplayName())));
+				Bukkit.broadcastMessage(plugin.chat(plugin.globalAFKMessage().replace("{player}", p.getDisplayName())));
 			} else if (p.hasPermission("afk.sendmessage.private")) {
 				i.setAfkMessage(plugin.chat(plugin.privateAFKMessage()));
 			}
-			p.setPlayerListName(ChatColor.GRAY + plugin.chat(plugin.tabListText()) + p.getName());
+			if (p.hasPermission("afk.tab"))
+				p.setPlayerListName(ChatColor.GRAY + plugin.chat(plugin.tabListText()) + p.getName());
 			PrefixNode node = PrefixNode.builder(plugin.chat(plugin.tabListText()), plugin.priorityLevel()).build();
 
 			plugin.api.getUserManager().modifyUser(p.getUniqueId(), user -> {
